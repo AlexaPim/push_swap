@@ -6,7 +6,7 @@
 /*   By: ado-prad <ado-prad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:54:09 by ado-prad          #+#    #+#             */
-/*   Updated: 2023/06/09 14:18:15 by ado-prad         ###   ########.fr       */
+/*   Updated: 2023/06/09 16:34:36 by ado-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,18 @@ t_numbers	*ft_init_stack(int argc, char **argv, t_numbers	*stack)
 	}
 	ft_put_index(stack);
 	return (stack);
+}
+
+void	free_list(t_numbers *stack)
+{
+	t_numbers	*content;
+	t_numbers	*next;
+
+	content = stack;
+	while (content != NULL)
+	{
+		next = content->next;
+		free(content);
+		content = next;
+	}
 }
