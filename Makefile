@@ -5,7 +5,7 @@ LIBFT = libft/libft.a
 PATH_SRC = ./src/
 
 SRC = $(PATH_SRC)main.c $(PATH_SRC)move_a.c $(PATH_SRC)move_b.c \
-	$(PATH_SRC)sort.c $(PATH_SRC)utils.c $(PATH_SRC)radix.c $(LIBFT)
+	$(PATH_SRC)sort.c $(PATH_SRC)radix.c $(PATH_SRC)utils.c $(LIBFT)
 
 FLAGS = -Wall -Wextra -Werror
 

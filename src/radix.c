@@ -6,50 +6,53 @@
 /*   By: ado-prad <ado-prad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 17:29:46 by ado-prad          #+#    #+#             */
-/*   Updated: 2023/06/09 16:42:58 by ado-prad         ###   ########.fr       */
+/*   Updated: 2023/06/12 12:59:06 by ado-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static int	get_the_digit(int max_index)
+int	ft_count_digit(int argc)
 {
-	int	digits;
+	int	count;
 
-	digits = 0;
-	while (max_index)
+	count = 0;
+	while (argc != 0)
 	{
-		max_index /= 2;
-		digits++;
+		argc /= 2;
+		count++;
 	}
-	return (digits);
+	return (count);
 }
 
-void	ft_radix(t_numbers **stack_a, t_numbers **stack_b, int stack_pos)
+void	ft_push_back(t_numbers **stack_a, t_numbers **stack_b)
 {
-	int			digit;
-	int			i;
-	int			j;
-	t_numbers	*aux;
-	int			size;
+	while (*stack_b)
+		ft_push_a(stack_a, stack_b);
+	return ;
+}
 
-	aux = *stack_a;
-	size = ft_lstsize(aux);
-	digit = get_the_digit(stack_pos);
+void	ft_radix(int argc, t_numbers **stack_a, t_numbers **stack_b)
+{
+	int	size;
+	int	i;
+	int	j;
+
 	i = 0;
-	while (i < digit)
+	size = ft_count_digit(argc - 1);
+	ft_printf("%d\n", argc);
+	while (i < size)
 	{
 		j = 0;
-		while (j++ < size)
+		while (j < argc - 1)
 		{
-			aux = *stack_a;
-			if ((aux->index >> i) & 1)
+			if (((*stack_a)->index >> i) & 1)
 				ft_rotate_a(stack_a);
 			else
-				ft_push_a(stack_a, stack_b);
+				ft_push_b(stack_a, stack_b);
+			j++;
 		}
-		while (ft_lstsize(*stack_b) != 0)
-			ft_push_a(stack_a, stack_b);
+		ft_push_back(stack_a, stack_b);
 		i++;
 	}
 }

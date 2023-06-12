@@ -6,7 +6,7 @@
 /*   By: ado-prad <ado-prad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:54:28 by ado-prad          #+#    #+#             */
-/*   Updated: 2023/06/09 14:20:15 by ado-prad         ###   ########.fr       */
+/*   Updated: 2023/06/12 12:57:58 by ado-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	ft_push_a(t_numbers	**stack_a, t_numbers	**stack_b)
 {
 	t_numbers	*temp;
 
-	temp = *stack_a;
-	(*stack_a) = (*stack_a)->next;
-	temp->next = *stack_b;
-	(*stack_b) = temp;
+	temp = *stack_b;
+	(*stack_b) = (*stack_b)->next;
+	temp->next = *stack_a;
+	*stack_a = temp;
 	ft_printf("pa\n");
 }
 
@@ -36,7 +36,6 @@ void	ft_swap_a(t_numbers **stack)
 		temp->next = *stack;
 		*stack = temp;
 		ft_printf("sa\n");
-		ft_print_stack(*stack);
 	}
 	else
 		return ;
@@ -47,12 +46,14 @@ void	ft_rotate_a(t_numbers	**stack)
 	t_numbers	*temp;
 
 	temp = *stack;
+	if ((*stack)->next == NULL)
+		return ;
 	while (temp->next != NULL)
 		temp = temp->next;
 	if (temp->next == NULL)
 	{
 		temp->next = *stack;
-		(*stack) = (*stack)->next;
+		*stack = (*stack)->next;
 		temp->next->next = NULL;
 		ft_printf("ra\n");
 	}
@@ -64,6 +65,8 @@ void	ft_rotatereverse_a(t_numbers **stack)
 	t_numbers	*last;
 
 	temp = *stack;
+	if ((*stack)->next == NULL)
+		return ;
 	while (temp->next->next != NULL)
 		temp = temp->next;
 	if (temp->next->next == NULL)
@@ -73,7 +76,6 @@ void	ft_rotatereverse_a(t_numbers **stack)
 		last->next = *stack;
 		*stack = last;
 		ft_printf("rra\n");
-		ft_print_stack(*stack);
 	}
 	return ;
 }

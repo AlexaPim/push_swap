@@ -5,90 +5,63 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ado-prad <ado-prad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/09 13:54:09 by ado-prad          #+#    #+#             */
-/*   Updated: 2023/06/09 16:34:36 by ado-prad         ###   ########.fr       */
+/*   Created: 2023/06/12 14:01:06 by ado-prad          #+#    #+#             */
+/*   Updated: 2023/06/12 14:57:46 by ado-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	ft_put_index(t_numbers *stack)
+int valid_order(t_numbers **stack_a)
 {
-	int			index;
-	t_numbers	*temp;
-	t_numbers	*aux;
+	t_numbers *aux;
 
-	temp = stack;
-	while (temp != NULL)
+	aux = *stack_a;//primeiro elemento da lista e enq n for nulo
+	while (aux != NULL)
 	{
-		index = 0;
-		aux = stack;
-		while (aux != NULL)
-		{
-			if (temp->number > aux->number)
-				index++;
-			aux = aux->next;
-		}
-		temp->index = index;
-		temp = temp->next;
+		if (aux->number > aux->next->number)
+			return (0);
+		if (aux->next == NULL)
+			break ;
+		aux = aux->next; 
 	}
+	return (1);
 }
 
-int	valid_numbers(char **argv)
+int have_duplicate(t_numbers **stack_a)
 {
-	int	i;
-	int	j;
+	t_numbers *n1;
+	t_numbers *n2;
 
-	i = 1;
-	while (argv[i])
+	n1 = *stack_a;
+	while (n1 != NULL)
 	{
-		j = 0;
-		if (argv[i][j] == ' ' || argv[i][j] == '-' || argv[i][j] == '+')
-			j++;
-		while (argv[i][j])
+		n2 = n1->next;
+		while (n2 != NULL)
 		{
-			if (ft_isdigit(argv[i][j]) == 0 &&
-				(argv[i][j] != ' ' || ft_isdigit(argv[i][j + 1]) == 0))
+			if (n2->number == n1->number)
 			{
-				ft_printf("not number\n");
 				return (1);
 			}
-			j++;
+			n2 = n2->next;
+			
 		}
-		ft_printf("%s\n", argv[i]);
-		i++;
+		n1 = n1->next;
 	}
 	return (0);
 }
 
-t_numbers	*ft_init_stack(int argc, char **argv, t_numbers	*stack)
+int	aux_for_norm(t_numbers **stack_a, t_numbers **stack_b, int argc)
 {
-	t_numbers	*temp;
-	int			i;
-
-	i = 1;
-	stack = ft_lstnew(argv[i++]);
-	temp = stack;
-	while (i < (argc))
-	{
-		temp->next = ft_lstnew(argv[i]);
-		temp = temp->next;
-		i++;
-	}
-	ft_put_index(stack);
-	return (stack);
-}
-
-void	free_list(t_numbers *stack)
-{
-	t_numbers	*content;
-	t_numbers	*next;
-
-	content = stack;
-	while (content != NULL)
-	{
-		next = content->next;
-		free(content);
-		content = next;
-	}
+	if (ft_lstsize(*stack_a) == 1)
+		return (0);
+	else if (ft_lstsize(*stack_a) == 2)
+		ft_sorttwo(&*stack_a);
+	else if (ft_lstsize(*stack_a) == 3)
+		ft_sortthree(&*stack_a);
+	else if (ft_lstsize(*stack_a) > 3 && ft_lstsize(*stack_a) < 6)
+		ft_sort_fourfive(&*stack_a, &*stack_b, argc - 1);
+	else
+		ft_radix(argc, &*stack_a, &*stack_b);
+	return (0);
 }

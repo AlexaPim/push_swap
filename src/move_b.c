@@ -6,7 +6,7 @@
 /*   By: ado-prad <ado-prad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:54:23 by ado-prad          #+#    #+#             */
-/*   Updated: 2023/06/09 14:20:25 by ado-prad         ###   ########.fr       */
+/*   Updated: 2023/06/12 12:59:22 by ado-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,16 @@ void	ft_push_b(t_numbers	**stack_a, t_numbers	**stack_b)
 {
 	t_numbers	*temp;
 
-	temp = *stack_b;
-	(*stack_b) = (*stack_b)->next;
-	temp->next = *stack_a;
-	*stack_a = temp;
+	if (!(*stack_a))
+		return ;
+	temp = *stack_a;
+	(*stack_a) = (*stack_a)->next;
+	temp->next = *stack_b;
+	(*stack_b) = temp;
 	ft_printf("pb\n");
 }
 
-void	ft_swap_b(t_numbers **stack)
+void	ft_swap_b(t_numbers	**stack)
 {
 	t_numbers	*temp;
 
