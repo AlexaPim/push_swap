@@ -6,7 +6,7 @@
 /*   By: ado-prad <ado-prad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:53:49 by ado-prad          #+#    #+#             */
-/*   Updated: 2023/06/13 14:58:17 by ado-prad         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:36:39 by ado-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ void		ft_radix(int argc, t_numbers **stack_a, t_numbers **stack_b);
 void		ft_push_back(t_numbers **stack_a, t_numbers **stack_b);
 int			ft_count_digit(int argc);
 void		ft_free(t_numbers **stack);
-int         ft_check_duplicate(t_numbers **stack_a);
-int         ft_check_order(t_numbers **stack_a);
-void        ft_sort_numbers(t_numbers **stack_a, t_numbers **stack_b, int argc);
-void        swap_swap(t_numbers **stack_a, t_numbers **stack_b);
-void        rotate_rotate(t_numbers **stack_a, t_numbers **stack_b);
+int			ft_check_duplicate(t_numbers **stack_a);
+int			ft_check_order(t_numbers **stack_a);
+void		ft_sort_numbers(t_numbers **stack_a, t_numbers **stack_b, int argc);
+void		swap_swap(t_numbers **stack_a, t_numbers **stack_b);
+void		rotate_rotate(t_numbers **stack_a, t_numbers **stack_b);
 
 #endif
