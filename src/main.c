@@ -6,7 +6,7 @@
 /*   By: ado-prad <ado-prad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:53:55 by ado-prad          #+#    #+#             */
-/*   Updated: 2023/06/12 14:57:45 by ado-prad         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:23:26 by ado-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	valid_numbers(char	**argv)
 			j++;
 		while (temp[j])
 		{
-			if (ft_isdigit(temp[j]) == 0)
+			if (ft_isdigit(temp[j]) == 0 || ft_strlen(&temp[j]) > 19)
 			{
 				free(temp);
 				return (1);
@@ -102,16 +102,13 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (1);
 	if (valid_numbers(argv) != 0)
-	{
-		ft_putstr_fd("error\n", 2);
-		return (0);
-	}
+		return(ft_printf("Error\n"));
 	stack_a = ft_init_stack(argc, argv, stack_a);
 	stack_b = NULL;
-	aux_for_norm(&stack_a, &stack_b, argc);
-	if(have_duplicate(&stack_a))
+	if (ft_check_duplicate(&stack_a) != 0)
 		return (ft_printf("Error\n"));
-	valid_order(&stack_a);
+	else if (ft_check_order(&stack_a) != 0)
+		ft_sort_numbers(&stack_a, &stack_b, argc);
 	ft_free(&stack_a);
 	ft_free(&stack_b);
 }

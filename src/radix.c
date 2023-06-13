@@ -6,7 +6,7 @@
 /*   By: ado-prad <ado-prad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 17:29:46 by ado-prad          #+#    #+#             */
-/*   Updated: 2023/06/12 12:59:06 by ado-prad         ###   ########.fr       */
+/*   Updated: 2023/06/13 14:54:56 by ado-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	ft_radix(int argc, t_numbers **stack_a, t_numbers **stack_b)
 
 	i = 0;
 	size = ft_count_digit(argc - 1);
-	ft_printf("%d\n", argc);
 	while (i < size)
 	{
 		j = 0;

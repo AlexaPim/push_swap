@@ -6,7 +6,7 @@
 /*   By: ado-prad <ado-prad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 13:54:01 by ado-prad          #+#    #+#             */
-/*   Updated: 2023/06/12 13:07:41 by ado-prad         ###   ########.fr       */
+/*   Updated: 2023/06/13 14:54:03 by ado-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,14 @@ void	ft_sorttwo(t_numbers **stack_a)
 
 void	ft_sortthree(t_numbers **stack_a)
 {
-	if ((*stack_a)->number > ((*stack_a)->next->number)
-		&& (*stack_a)->next->number > ((*stack_a)->next->next->number))
+	while (ft_check_order(stack_a) != 0)
 	{
-		ft_swap_a(&*stack_a);
-		ft_rotatereverse_a(&*stack_a);
-	}
-	while (!((*stack_a)->number < ((*stack_a)->next->number)
-			&& (*stack_a)->next->number < ((*stack_a)->next->next->number)))
-	{
+		if ((*stack_a)->number > ((*stack_a)->next->number)
+			&& (*stack_a)->next->number > ((*stack_a)->next->next->number))
+		{
+			ft_swap_a(&*stack_a);
+			ft_rotatereverse_a(&*stack_a);
+		}
 		if ((*stack_a)->number > (*stack_a)->next->number
 			&& (*stack_a)->number < (*stack_a)->next->next->number)
 			ft_swap_a(stack_a);

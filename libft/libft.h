@@ -6,7 +6,7 @@
 /*   By: ado-prad <ado-prad@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 19:42:57 by ado-prad          #+#    #+#             */
-/*   Updated: 2023/06/09 14:04:49 by ado-prad         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:19:12 by ado-prad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define BUFFER_SIZE 21
 
 typedef struct s_numbers {
-	int					number;
+	long				number;
 	int					index;
 	struct s_numbers	*next;
 }	t_numbers;
@@ -63,6 +63,7 @@ char		**ft_split(char const *s, char c);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 int			ft_tolower(int c);
 int			ft_toupper(int c);
+long		ft_atol(const char *nptr);
 
 //printf
 int			ft_putstr(char *str);

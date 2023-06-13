@@ -6,7 +6,7 @@
 #    By: ado-prad <ado-prad@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/08 20:26:28 by ado-prad          #+#    #+#              #
-#    Updated: 2023/06/09 13:27:22 by ado-prad         ###   ########.fr        #
+#    Updated: 2023/06/13 15:16:58 by ado-prad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,9 +58,9 @@ ft_print_pointer.c\
 ft_print_char_and_string.c\
 ft_print_unsigned.c\
 get_next_line.c\
-get_next_line_utils.c\
 ft_lstnew.c\
 ft_lstsize.c\
+ft_atol.c\
 
 OBJ = $(SRC:.c=.o)
 
